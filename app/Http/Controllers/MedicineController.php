@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Medicine;
 use Illuminate\Http\Request;
 
 class MedicineController extends Controller
@@ -11,7 +12,8 @@ class MedicineController extends Controller
      */
     public function index()
     {
-        //
+        $medicines = Medicine::latest()->get();
+        return view('medicines.index', compact('medicines'));
     }
 
     /**
@@ -19,7 +21,7 @@ class MedicineController extends Controller
      */
     public function create()
     {
-        //
+        return view('medicines.create');
     }
 
     /**
@@ -27,7 +29,16 @@ class MedicineController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama_obat' => 'required|string|max:255',
+            'satuan' => 'required|string|max:255',
+            'stok' => 'required|integer|min:0',
+        ]);
+
+        Medicine::create($request->all());
+
+        return redirect()->route('medicines.index')
+            ->with('success', 'Data Baru Obat Berhasil Ditambah');
     }
 
     /**
@@ -35,7 +46,7 @@ class MedicineController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return view('medicines.show', compact('medicine'));
     }
 
     /**
@@ -43,22 +54,34 @@ class MedicineController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('medicines.edit', compact('medicine'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Medicine $medicine)
     {
-        //
+        $request->validate([
+            'nama_obat' => 'required|string|max:255',
+            'satuan' => 'required|string|max:255',
+            'stok' => 'required|integer|min:0',
+        ]);
+
+        $medicine->update($request->all());
+
+        return redirect()->route('medicines.index')
+            ->with('success', 'Data Obat Berhasil Diperbarui');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Medicine $medicine)
     {
-        //
+        $medicine->delete();
+
+        return redirect()->route('medicines.index')
+            ->with('success', 'Data Obat Berhasil Dihapus');
     }
 }

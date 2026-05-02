@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth')->group(function () {
     Route::middleware('role:admin')->group(function () {
         Route::resource('students', StudentController::class);
-        Route::resources('medicines', MedicineController::class);
+        Route::resource('medicines', MedicineController::class);
     });
     Route::middleware('role:petugas')->group(function () {
         Route::resource('treatments', TreatmentController::class);
