@@ -1,20 +1,17 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\MedicineController;
+use App\Http\Controllers\TreatmentController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::middleware('role:admin')->group(function () {
+        Route::resource('students', StudentController::class);
+        Route::resources('medicines', MedicineController::class);
+    });
+    Route::middleware('role:petugas')->group(function () {
+        Route::resource('treatments', TreatmentController::class);
+        Route::get('/stok-obat', [MedicineController::class, 'index']);
+    });
 });
-
-require __DIR__.'/auth.php';
