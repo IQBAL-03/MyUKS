@@ -29,8 +29,8 @@
                             <td class="px-6 py-4 text-gray-400">
                                 {{ $medicines instanceof \Illuminate\Pagination\LengthAwarePaginator ? $medicines->firstItem() + $index : $index + 1 }}
                             </td>
-                            <td class="px-6 py-4 text-gray-100 font-medium">{{ $medicine->name }}</td>
-                            <td class="px-6 py-4 text-gray-100">{{ $medicine->stock }} {{ $medicine->unit }}</td>
+                            <td class="px-6 py-4 text-gray-100 font-medium">{{ $medicine->nama_obat }}</td>
+                            <td class="px-6 py-4 text-gray-100">{{ $medicine->stok }} {{ $medicine->satuan }}</td>
                             <td class="px-6 py-4 text-center whitespace-nowrap">
                                 <a href="{{ route('medicines.edit', $medicine->id) }}" class="inline-block px-3 py-1 bg-sky-600 hover:bg-sky-500 text-white rounded transition-colors duration-150 text-xs font-medium mr-2">
                                     Edit

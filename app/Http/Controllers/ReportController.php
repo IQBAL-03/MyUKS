@@ -11,19 +11,31 @@ class ReportController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $laporan = Treatment::select(
+        $selectedYear = $request->get('tahun', date('Y'));
+        
+        $reports = Treatment::select(
             DB::raw('MONTH(tanggal_kunjungan) as bulan'),
             DB::raw('YEAR(tanggal_kunjungan) as tahun'),
             DB::raw('COUNT(*) as total_kunjungan'),
         )
+        ->whereYear('tanggal_kunjungan', $selectedYear)
         ->groupBy('tahun', 'bulan')
         ->orderBy('tahun', 'desc')
         ->orderBy('bulan', 'desc')
         ->get();
 
-        return view('reports.index', compact('laporan'));
+        $years = Treatment::select(DB::raw('YEAR(tanggal_kunjungan) as year'))
+            ->distinct()
+            ->orderBy('year', 'desc')
+            ->pluck('year');
+
+        if ($years->isEmpty()) {
+            $years = collect([date('Y')]);
+        }
+
+        return view('reports.index', compact('reports', 'years'));
     }
 
     /**

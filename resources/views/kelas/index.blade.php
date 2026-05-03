@@ -28,7 +28,7 @@
                             <td class="px-6 py-4 text-gray-400">
                                 {{ $kelas instanceof \Illuminate\Pagination\LengthAwarePaginator ? $kelas->firstItem() + $index : $index + 1 }}
                             </td>
-                            <td class="px-6 py-4 text-gray-100 font-medium">{{ $item->name }}</td>
+                            <td class="px-6 py-4 text-gray-100 font-medium">{{ $item->nama_kelas }}</td>
                             <td class="px-6 py-4 text-center whitespace-nowrap">
                                 <a href="{{ route('kelas.edit', $item->id) }}" class="inline-block px-3 py-1 bg-sky-600 hover:bg-sky-500 text-white rounded transition-colors duration-150 text-xs font-medium mr-2">
                                     Edit

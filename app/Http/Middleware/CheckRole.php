@@ -15,7 +15,7 @@ class CheckRole
      */
     public function handle(Request $request, Closure $next, String $role): Response
     {
-        if(!auth()->check() || auth()->check()->role !== $role){
+        if(!auth()->check() || auth()->user()->role !== $role){
             abort(403, 'Akses Ditolak');
         }
         return $next($request);

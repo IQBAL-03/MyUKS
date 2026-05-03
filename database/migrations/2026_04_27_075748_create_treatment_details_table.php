@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('treatment_id');
             $table->integer('medicine_id');
+            $table->integer('jumlah_obat')->default(1);
             $table->timestamps();
         });
     }

@@ -12,7 +12,7 @@ class MedicineController extends Controller
      */
     public function index()
     {
-        $medicines = Medicine::latest()->get();
+        $medicines = Medicine::latest()->paginate(10);
         return view('medicines.index', compact('medicines'));
     }
 

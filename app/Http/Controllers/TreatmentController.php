@@ -15,7 +15,7 @@ class TreatmentController extends Controller
      */
     public function index()
     {
-        $treatments = Treatment::with('student')->latest()->get();
+        $treatments = Treatment::with('student')->latest()->paginate(10);
         return view('treatments.index', compact('treatments'));
     }
 
@@ -72,8 +72,8 @@ class TreatmentController extends Controller
      */
     public function show(string $id)
     {
-        $treatments = Treatment::with(['student', 'medicine'])->findOrFail($id);
-        return view('treatments.show', compact('treatments'));
+        $treatment = Treatment::with(['student', 'medicines'])->findOrFail($id);
+        return view('treatments.show', compact('treatment'));
     }
 
     /**

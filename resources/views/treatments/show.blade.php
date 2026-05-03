@@ -13,11 +13,11 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
                     <p class="text-xs text-gray-400 mb-1">Nama Siswa</p>
-                    <p class="text-gray-100 font-medium">{{ $treatment->student->name }}</p>
+                    <p class="text-gray-100 font-medium">{{ $treatment->student->nama }}</p>
                 </div>
                 <div>
                     <p class="text-xs text-gray-400 mb-1">Kelas</p>
-                    <p class="text-gray-100 font-medium">{{ $treatment->student->kelas->name }}</p>
+                    <p class="text-gray-100 font-medium">{{ $treatment->student->kelas->nama_kelas }}</p>
                 </div>
             </div>
         </div>
@@ -27,15 +27,15 @@
             <div class="divide-y divide-gray-700">
                 <div class="py-4 first:pt-0">
                     <p class="text-xs text-gray-400 mb-1">Tanggal Kunjungan</p>
-                    <p class="text-gray-100">{{ \Carbon\Carbon::parse($treatment->visit_date)->format('d M Y') }}</p>
+                    <p class="text-gray-100">{{ \Carbon\Carbon::parse($treatment->tanggal_kunjungan)->format('d M Y') }}</p>
                 </div>
                 <div class="py-4">
                     <p class="text-xs text-gray-400 mb-1">Keluhan</p>
-                    <p class="text-gray-100">{{ $treatment->complaint }}</p>
+                    <p class="text-gray-100">{{ $treatment->keluhan }}</p>
                 </div>
                 <div class="py-4">
                     <p class="text-xs text-gray-400 mb-1">Diagnosis</p>
-                    <p class="text-gray-100">{{ $treatment->diagnosis }}</p>
+                    <p class="text-gray-100">{{ $treatment->diagnosa }}</p>
                 </div>
                 <div class="py-4 last:pb-0">
                     <p class="text-xs text-gray-400 mb-1">Catatan Tambahan</p>
@@ -56,16 +56,14 @@
                                 <th class="px-4 py-3 border-b border-gray-700 font-semibold w-12">No</th>
                                 <th class="px-4 py-3 border-b border-gray-700 font-semibold">Nama Obat</th>
                                 <th class="px-4 py-3 border-b border-gray-700 font-semibold">Jumlah</th>
-                                <th class="px-4 py-3 border-b border-gray-700 font-semibold">Dosis</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-700 text-sm">
                             @foreach ($treatment->medicines as $index => $medicine)
                                 <tr class="hover:bg-gray-700 transition-colors duration-150">
                                     <td class="px-4 py-3 text-gray-400">{{ $index + 1 }}</td>
-                                    <td class="px-4 py-3 text-gray-100 font-medium">{{ $medicine->name }}</td>
-                                    <td class="px-4 py-3 text-gray-100">{{ $medicine->pivot->quantity }}</td>
-                                    <td class="px-4 py-3 text-gray-100">{{ $medicine->pivot->dosage }}</td>
+                                    <td class="px-4 py-3 text-gray-100 font-medium">{{ $medicine->nama_obat }}</td>
+                                    <td class="px-4 py-3 text-gray-100">{{ $medicine->pivot->jumlah_obat }} {{ $medicine->satuan }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

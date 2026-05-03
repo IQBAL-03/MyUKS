@@ -30,9 +30,9 @@
                             <td class="px-6 py-4 text-gray-400">
                                 {{ $students->firstItem() + $index }}
                             </td>
-                            <td class="px-6 py-4 text-gray-100 font-medium">{{ $student->name }}</td>
+                            <td class="px-6 py-4 text-gray-100 font-medium">{{ $student->nama }}</td>
                             <td class="px-6 py-4 text-gray-100">
-                                @if ($student->gender === 'L')
+                                @if ($student->jenis_kelamin === 'L')
                                     Laki-laki
                                 @else
                                     Perempuan
