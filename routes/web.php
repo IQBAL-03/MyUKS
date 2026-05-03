@@ -24,3 +24,5 @@ Route::middleware('auth')->group(function () {
         Route::get('/stok-obat', [MedicineController::class, 'index']);
     });
 });
+
+require __DIR__.'/auth.php';

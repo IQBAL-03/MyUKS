@@ -1,0 +1,90 @@
+<x-app-layout>
+    <div class="mb-6 flex justify-between items-center">
+        <h2 class="text-2xl font-bold text-gray-100">Edit Obat</h2>
+        <a href="{{ route('medicines.index') }}" class="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-gray-100 font-medium rounded-lg transition-colors duration-200">
+            &larr; Kembali
+        </a>
+    </div>
+
+    <div class="bg-gray-800 border border-gray-700 rounded-xl shadow-lg p-6">
+        <form action="{{ route('medicines.update', $medicine->id) }}" method="POST">
+            @csrf
+            @method('PUT')
+
+            <div class="space-y-5">
+
+                <div>
+                    <label for="name" class="block text-sm text-gray-400 mb-1">Nama Obat</label>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        value="{{ old('name', $medicine->name) }}"
+                        required
+                        class="w-full bg-gray-800 border border-gray-700 text-gray-100 rounded-lg px-4 py-2 focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-colors duration-150"
+                    >
+                    @error('name')
+                        <p class="mt-1 text-sm text-red-400">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div>
+                    <label for="stock" class="block text-sm text-gray-400 mb-1">Stok Saat Ini</label>
+                    <input
+                        type="number"
+                        id="stock"
+                        name="stock"
+                        value="{{ old('stock', $medicine->stock) }}"
+                        min="0"
+                        required
+                        class="w-full bg-gray-800 border border-gray-700 text-gray-100 rounded-lg px-4 py-2 focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-colors duration-150"
+                    >
+                    @error('stock')
+                        <p class="mt-1 text-sm text-red-400">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div>
+                    <label for="unit" class="block text-sm text-gray-400 mb-1">Satuan</label>
+                    <input
+                        type="text"
+                        id="unit"
+                        name="unit"
+                        value="{{ old('unit', $medicine->unit) }}"
+                        required
+                        class="w-full bg-gray-800 border border-gray-700 text-gray-100 rounded-lg px-4 py-2 focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-colors duration-150"
+                    >
+                    @error('unit')
+                        <p class="mt-1 text-sm text-red-400">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div class="pt-4 border-t border-gray-700">
+                    <p class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3">Tambah Stok</p>
+                    <label for="add_stock" class="block text-sm text-gray-400 mb-1">Jumlah Tambahan</label>
+                    <input
+                        type="number"
+                        id="add_stock"
+                        name="add_stock"
+                        value="{{ old('add_stock') }}"
+                        min="0"
+                        placeholder="0"
+                        class="w-full bg-gray-800 border border-gray-700 text-gray-100 rounded-lg px-4 py-2 focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-colors duration-150"
+                    >
+                    <p class="mt-1 text-sm text-gray-500">Isi angka ini untuk menambah ke stok saat ini. Kosongkan jika tidak ingin menambah.</p>
+                    @error('add_stock')
+                        <p class="mt-1 text-sm text-red-400">{{ $message }}</p>
+                    @enderror
+                </div>
+
+            </div>
+
+            <div class="mt-6 flex justify-end">
+                <button type="submit" class="px-5 py-2 bg-sky-600 hover:bg-sky-500 text-white font-medium rounded-lg transition-colors duration-200">
+                    Perbarui
+                </button>
+            </div>
+
+        </form>
+    </div>
+</x-app-layout>
