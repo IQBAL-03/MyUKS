@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kelas;
 use Illuminate\Http\Request;
 
 class KelasController extends Controller
@@ -11,7 +12,8 @@ class KelasController extends Controller
      */
     public function index()
     {
-        //
+        $kelas = Kelas::latest()->get();
+        return view('kelas.index', compact('kelas'));
     }
 
     /**
@@ -19,7 +21,7 @@ class KelasController extends Controller
      */
     public function create()
     {
-        //
+        return view('kelas.create');
     }
 
     /**
@@ -27,38 +29,55 @@ class KelasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama_kelas' => 'required|string|max:255|unique:kelas,nama_kelas',
+        ]);
+
+        Kelas::create($request->all());
+
+        return redirect()->route('kelas.index')
+            ->with('success', 'Data Kelas berhasil Ditambah');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Kelas $kelas)
     {
-        //
+        return view('kelas.show', compact('kelas'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Kelas $kelas)
     {
-        //
+        return view('kelas.edit', compact('kelas'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Kelas $kelas)
     {
-        //
+        $request->validate([
+            'nama_kelas' => 'required|string|max:255|unique:kelas,nama_kelas',
+        ]);
+
+        $kelas->update($request->all());
+
+        return redirect()->route('kelas.index')
+            ->with('success', 'Data Kelas Berhasil Diperbarui');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Kelas $kelas)
     {
-        //
+        $kelas->delete();
+
+        return redirect()->route('kelas.index')
+            ->with('success', 'Data Berhasil Dihapus');
     }
 }
