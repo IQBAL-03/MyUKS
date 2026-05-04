@@ -38,7 +38,7 @@
                                     Perempuan
                                 @endif
                             </td>
-                            <td class="px-6 py-4 text-gray-100">{{ $student->kelas->name }}</td>
+                            <td class="px-6 py-4 text-gray-100">{{ $student->kelas->nama_kelas }}</td>
                             <td class="px-6 py-4 text-center whitespace-nowrap">
                                 <a href="{{ route('students.edit', $student->id) }}" class="inline-block px-3 py-1 bg-sky-600 hover:bg-sky-500 text-white rounded transition-colors duration-150 text-xs font-medium mr-2">
                                     Edit

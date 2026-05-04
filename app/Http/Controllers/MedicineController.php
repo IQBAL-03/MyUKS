@@ -52,7 +52,7 @@ class MedicineController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Medicine $medicine)
     {
         return view('medicines.edit', compact('medicine'));
     }
@@ -66,9 +66,14 @@ class MedicineController extends Controller
             'nama_obat' => 'required|string|max:255',
             'satuan' => 'required|string|max:255',
             'stok' => 'required|integer|min:0',
+            'add_stock' => 'nullable|integer|min:0',
         ]);
 
-        $medicine->update($request->all());
+        $medicine->update([
+            'nama_obat' => $request->nama_obat,
+            'satuan' => $request->satuan,
+            'stok' => $request->stok + ($request->add_stock ?? 0),
+        ]);
 
         return redirect()->route('medicines.index')
             ->with('success', 'Data Obat Berhasil Diperbarui');

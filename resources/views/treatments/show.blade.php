@@ -33,13 +33,9 @@
                     <p class="text-xs text-gray-400 mb-1">Keluhan</p>
                     <p class="text-gray-100">{{ $treatment->keluhan }}</p>
                 </div>
-                <div class="py-4">
+                <div class="py-4 last:pb-0">
                     <p class="text-xs text-gray-400 mb-1">Diagnosis</p>
                     <p class="text-gray-100">{{ $treatment->diagnosa }}</p>
-                </div>
-                <div class="py-4 last:pb-0">
-                    <p class="text-xs text-gray-400 mb-1">Catatan Tambahan</p>
-                    <p class="text-gray-100">{{ $treatment->notes ?? '-' }}</p>
                 </div>
             </div>
         </div>

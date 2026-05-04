@@ -34,7 +34,7 @@ class StudentController extends Controller
         $request->validate([
             'nis' => 'required|numeric|unique:students,nis',
             'nama' => 'required|string|max:255',
-            'kelas_id' => 'requires|exists:kelas,id',
+            'kelas_id' => 'required|exists:kelas,id',
             'jenis_kelamin' => 'required|in:L,P'
         ]);
 
@@ -47,7 +47,7 @@ class StudentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Student $student)
     {
         return view('students.show', compact('student'));
     }
@@ -55,7 +55,7 @@ class StudentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Student $student)
     {
         $kelas = Kelas::all();
         return view('students.edit', compact('student', 'kelas'));

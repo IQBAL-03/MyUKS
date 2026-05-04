@@ -18,6 +18,10 @@
                 @else
                     <a href="{{ route('login') }}"
                         class="text-gray-300 hover:text-white transition px-4 py-2 hover:bg-gray-800 rounded">Login</a>
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}"
+                            class="text-gray-300 hover:text-white transition px-4 py-2 hover:bg-gray-800 rounded">Register</a>
+                    @endif
                 @endauth
             </div>
         @endif
@@ -44,10 +48,16 @@
                 Buka Dashboard
             </a>
         @else
-            <a href="{{ route('login') }}"
-                class="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-medium rounded transition duration-200">
-                Mulai Sekarang
-            </a>
+            <div class="flex gap-4">
+                <a href="{{ route('login') }}"
+                    class="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-medium rounded transition duration-200">
+                    Masuk
+                </a>
+                <a href="{{ route('register') }}"
+                    class="px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white font-medium rounded transition duration-200">
+                    Daftar
+                </a>
+            </div>
         @endauth
     </main>
 

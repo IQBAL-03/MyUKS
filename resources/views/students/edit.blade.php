@@ -14,33 +14,48 @@
             <div class="space-y-5">
 
                 <div>
-                    <label for="name" class="block text-sm text-gray-400 mb-1">Nama Lengkap</label>
+                    <label for="nis" class="block text-sm text-gray-400 mb-1">NIS</label>
                     <input
                         type="text"
-                        id="name"
-                        name="name"
-                        value="{{ old('name', $student->name) }}"
+                        id="nis"
+                        name="nis"
+                        value="{{ old('nis', $student->nis) }}"
                         required
                         class="w-full bg-gray-800 border border-gray-700 text-gray-100 rounded-lg px-4 py-2 focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-colors duration-150"
                     >
-                    @error('name')
+                    @error('nis')
                         <p class="mt-1 text-sm text-red-400">{{ $message }}</p>
                     @enderror
                 </div>
 
                 <div>
-                    <label for="gender" class="block text-sm text-gray-400 mb-1">Jenis Kelamin</label>
+                    <label for="nama" class="block text-sm text-gray-400 mb-1">Nama Lengkap</label>
+                    <input
+                        type="text"
+                        id="nama"
+                        name="nama"
+                        value="{{ old('nama', $student->nama) }}"
+                        required
+                        class="w-full bg-gray-800 border border-gray-700 text-gray-100 rounded-lg px-4 py-2 focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-colors duration-150"
+                    >
+                    @error('nama')
+                        <p class="mt-1 text-sm text-red-400">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div>
+                    <label for="jenis_kelamin" class="block text-sm text-gray-400 mb-1">Jenis Kelamin</label>
                     <select
-                        id="gender"
-                        name="gender"
+                        id="jenis_kelamin"
+                        name="jenis_kelamin"
                         required
                         class="w-full bg-gray-800 border border-gray-700 text-gray-100 rounded-lg px-4 py-2 focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-colors duration-150"
                     >
                         <option value="" disabled>-- Pilih Jenis Kelamin --</option>
-                        <option value="L" {{ old('gender', $student->gender) === 'L' ? 'selected' : '' }}>Laki-laki</option>
-                        <option value="P" {{ old('gender', $student->gender) === 'P' ? 'selected' : '' }}>Perempuan</option>
+                        <option value="L" {{ old('jenis_kelamin', $student->jenis_kelamin) === 'L' ? 'selected' : '' }}>Laki-laki</option>
+                        <option value="P" {{ old('jenis_kelamin', $student->jenis_kelamin) === 'P' ? 'selected' : '' }}>Perempuan</option>
                     </select>
-                    @error('gender')
+                    @error('jenis_kelamin')
                         <p class="mt-1 text-sm text-red-400">{{ $message }}</p>
                     @enderror
                 </div>
@@ -56,7 +71,7 @@
                         <option value="" disabled>-- Pilih Kelas --</option>
                         @foreach ($kelas as $k)
                             <option value="{{ $k->id }}" {{ old('kelas_id', $student->kelas_id) == $k->id ? 'selected' : '' }}>
-                                {{ $k->name }}
+                                {{ $k->nama_kelas }}
                             </option>
                         @endforeach
                     </select>

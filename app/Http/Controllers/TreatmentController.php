@@ -26,7 +26,7 @@ class TreatmentController extends Controller
     {
         $medicines = Medicine::where('stok', '>', 0)->get();
         $students = Student::all();
-        return view('treatments.create', compact('medicines'));
+        return view('treatments.create', compact('medicines', 'students'));
     }
 
     /**
