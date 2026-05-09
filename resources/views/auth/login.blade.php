@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login — UKS SMKN X</title>
+    <title>Login — MyUKS</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-900 min-h-screen flex items-center justify-center">
@@ -11,7 +11,7 @@
     <div class="bg-gray-800 border border-gray-700 rounded-2xl p-8 w-full max-w-sm shadow-xl">
 
         <div class="text-center mb-8">
-            <h1 class="text-xl font-bold text-sky-400">UKS SMKN X</h1>
+            <h1 class="text-xl font-bold text-sky-400">UKS SMKN 1 PURWOKERTO</h1>
             <p class="text-sm text-gray-500 mt-1">Sistem Informasi Kesehatan Siswa</p>
         </div>
 
@@ -58,14 +58,22 @@
                     @enderror
                 </div>
 
-                <div class="flex items-center">
-                    <input
-                        type="checkbox"
-                        id="remember"
-                        name="remember"
-                        class="w-4 h-4 bg-gray-900 border-gray-700 rounded text-sky-500 focus:ring-sky-500 focus:ring-offset-gray-800"
-                    >
-                    <label for="remember" class="ml-2 text-sm text-gray-400">Ingat Saya</label>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <input
+                            type="checkbox"
+                            id="remember"
+                            name="remember"
+                            class="w-4 h-4 bg-gray-900 border-gray-700 rounded text-sky-500 focus:ring-sky-500 focus:ring-offset-gray-800"
+                        >
+                        <label for="remember" class="ml-2 text-sm text-gray-400">Ingat Saya</label>
+                    </div>
+
+                    @if (Route::has('password.request'))
+                        <a href="{{ route('password.request') }}" class="text-sm text-sky-400 hover:text-sky-300">
+                            Lupa password?
+                        </a>
+                    @endif
                 </div>
 
             </div>
@@ -74,9 +82,21 @@
                 Masuk
             </button>
 
+            @if (Route::has('register'))
+                <div class="mt-8 text-center">
+                    <p class="text-sm text-gray-400">
+                        Belum punya akun? 
+                        <a href="{{ route('register') }}" class="text-sky-400 hover:text-sky-300 font-medium">
+                            Daftar sekarang
+                        </a>
+                    </p>
+                </div>
+            @endif
+
         </form>
 
     </div>
 
 </body>
 </html>
+

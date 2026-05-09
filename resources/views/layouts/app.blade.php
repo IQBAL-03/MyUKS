@@ -16,24 +16,18 @@
 </head>
 <body class="font-sans antialiased bg-gray-900 text-gray-100 flex h-screen overflow-hidden">
 
-    <!-- SIDEBAR -->
     <aside class="w-64 bg-gray-800 border-r border-gray-700 flex flex-col">
-        <!-- Logo Area -->
         <div class="h-16 flex items-center px-6 border-b border-gray-700">
             <span class="text-xl font-bold text-blue-500 tracking-wider">MyUKS</span>
         </div>
-
-        <!-- Menu Navigasi -->
         <nav class="flex-1 overflow-y-auto py-4 px-3 space-y-1">
             
-            <!-- Menu Kunjungan (Bisa diakses Admin & Petugas) -->
             <a href="{{ route('treatments.index') }}" class="block px-4 py-2.5 rounded hover:bg-gray-700 hover:text-white transition text-gray-300">
                 Kunjungan UKS
             </a>
 
-            <!-- Menu Khusus Admin -->
             @if(auth()->user()->role === 'admin')
-                <div class="pt-4 pb-2 px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                <div class="mt-4 pt-4 pb-2 px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider border-t border-gray-700">
                     Data Master
                 </div>
                 <a href="{{ route('students.index') }}" class="block px-4 py-2.5 rounded hover:bg-gray-700 hover:text-white transition text-gray-300">
@@ -46,7 +40,7 @@
                     Kelola Obat
                 </a>
                 
-                <div class="pt-4 pb-2 px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                <div class="mt-4 pt-4 pb-2 px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider border-t border-gray-700">
                     Laporan
                 </div>
                 <a href="{{ route('reports.index') }}" class="block px-4 py-2.5 rounded hover:bg-gray-700 hover:text-white transition text-gray-300">
@@ -56,7 +50,7 @@
 
             <!-- Menu Khusus Petugas -->
             @if(auth()->user()->role === 'petugas')
-                <div class="pt-4 pb-2 px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                <div class="mt-4 pt-4 pb-2 px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider border-t border-gray-700">
                     Informasi
                 </div>
                 <a href="{{ url('/stok-obat') }}" class="block px-4 py-2.5 rounded hover:bg-gray-700 hover:text-white transition text-gray-300">
@@ -66,16 +60,12 @@
 
         </nav>
     </aside>
-
-    <!-- KONTEN UTAMA -->
     <div class="flex-1 flex flex-col h-screen overflow-hidden">
         
-        <!-- Navbar Atas -->
         <header class="h-16 bg-gray-800 border-b border-gray-700 flex items-center justify-end px-6">
             <div class="flex items-center gap-4">
                 <span class="text-sm text-gray-300">Halo, {{ Auth::user()->name }} ({{ ucfirst(Auth::user()->role) }})</span>
                 
-                <!-- Tombol Logout bawaan Breeze -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button type="submit" class="text-sm px-3 py-1.5 bg-red-600 hover:bg-red-500 text-white rounded transition">
@@ -85,7 +75,6 @@
             </div>
         </header>
 
-        <!-- Slot Konten (Tempat halaman lain disuntikkan) -->
         <main class="flex-1 overflow-y-auto bg-gray-900 p-6">
             {{ $slot }}
         </main>

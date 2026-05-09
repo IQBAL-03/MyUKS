@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Akun — UKS SMKN X</title>
+    <title>Daftar Akun — MyUKS</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-900 min-h-screen flex items-center justify-center p-6">
@@ -12,7 +12,7 @@
 
         <div class="text-center mb-8">
             <h1 class="text-xl font-bold text-sky-400">Daftar Akun</h1>
-            <p class="text-sm text-gray-500 mt-1">UKS SMKN X</p>
+            <p class="text-sm text-gray-500 mt-1">UKS SMKN 1 PURWOKERTO</p>
         </div>
 
         <form method="POST" action="{{ route('register') }}">

@@ -62,7 +62,7 @@
     </main>
 
     <footer class="w-full py-6 text-center text-sm text-gray-600">
-        &copy; {{ date('Y') }} MyUKS. Hak Cipta Dilindungi.
+        &copy; {{ date('Y') }} MyUKS.
     </footer>
 
 </body>
