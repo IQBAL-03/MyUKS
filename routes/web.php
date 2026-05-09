@@ -12,7 +12,12 @@ Route::get('/', function(){
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        $siswa = \App\Models\Student::count();
+        $obat = \App\Models\Medicine::count();
+        $perawatan = \App\Models\Treatment::count();
+        $kelas = \App\Models\Kelas::count();
+
+        return view('dashboard', compact('siswa', 'obat', 'perawatan', 'kelas'));
     })->name('dashboard');
 
     Route::resource('treatments', TreatmentController::class);
