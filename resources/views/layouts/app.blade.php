@@ -77,6 +77,18 @@
         </header>
 
         <main class="flex-1 overflow-y-auto bg-gray-900 p-6">
+            @if (session('success'))
+                <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 10000)" x-transition
+                    class="fixed top-6 right-6 z-[9999] min-w-[300px] flex items-center justify-between px-4 py-3 bg-green-900 border border-green-700 text-green-100 rounded-lg shadow-2xl">
+                    <div class="flex items-center gap-3">
+                        <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <span class="font-medium">{{ session('success') }}</span>
+                    </div>
+                    <button @click="show = false" class="text-green-400 hover:text-green-200 transition focus:outline-none ml-4">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+            @endif
             {{ $slot }}
         </main>
 

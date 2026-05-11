@@ -26,12 +26,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::middleware('role:admin')->group(function () {
         Route::get('/laporan', [\App\Http\Controllers\ReportController::class, 'index'])->name('reports.index');
         Route::resource('students', StudentController::class);
-        Route::resource('medicines', MedicineController::class);
+        Route::resource('medicines', MedicineController::class)->except(['edit', 'update']);
         Route::resource('kelas', KelasController::class);
     });
     Route::middleware('role:petugas')->group(function () {
         Route::get('/stok-obat', [MedicineController::class, 'index']);
     });
+
+    Route::get('medicines/{medicine}/edit', [MedicineController::class, 'edit'])->name('medicines.edit');
+    Route::put('medicines/{medicine}', [MedicineController::class, 'update'])->name('medicines.update');
 });
 
 require __DIR__.'/auth.php';

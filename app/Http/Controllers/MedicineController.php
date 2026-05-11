@@ -66,14 +66,18 @@ class MedicineController extends Controller
             'nama_obat' => 'required|string|max:255',
             'satuan' => 'required|string|max:255',
             'stok' => 'required|integer|min:0',
-            'add_stock' => 'nullable|integer|min:0',
         ]);
 
         $medicine->update([
             'nama_obat' => $request->nama_obat,
             'satuan' => $request->satuan,
-            'stok' => $request->stok + ($request->add_stock ?? 0),
+            'stok' => $request->stok,
         ]);
+
+        if (auth()->user()->role === 'petugas') {
+            return redirect('/stok-obat')
+                ->with('success', 'Data Obat Berhasil Diperbarui');
+        }
 
         return redirect()->route('medicines.index')
             ->with('success', 'Data Obat Berhasil Diperbarui');

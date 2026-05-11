@@ -11,11 +11,7 @@
     </div>
 
 
-    @if (session('success'))
-        <div class="mb-6 px-4 py-3 bg-green-900 border border-green-700 text-green-100 rounded-lg shadow-sm">
-            {{ session('success') }}
-        </div>
-    @endif
+
 
     <div class="bg-gray-800 rounded-xl shadow-lg border border-gray-700 overflow-hidden">
         <div class="overflow-x-auto">
