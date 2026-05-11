@@ -23,6 +23,7 @@
                 <thead>
                     <tr class="bg-gray-700 text-gray-300 text-sm uppercase tracking-wider">
                         <th class="px-6 py-4 border-b border-gray-600 font-semibold">Tanggal</th>
+                        <th class="px-6 py-4 border-b border-gray-600 font-semibold">NIS</th>
                         <th class="px-6 py-4 border-b border-gray-600 font-semibold">Nama Siswa</th>
                         <th class="px-6 py-4 border-b border-gray-600 font-semibold">Keluhan</th>
                         <th class="px-6 py-4 border-b border-gray-600 font-semibold text-center">Aksi</th>
@@ -34,6 +35,10 @@
 
                             <td class="px-6 py-4 whitespace-nowrap">
                                 {{ \Carbon\Carbon::parse($item->tanggal_kunjungan)->format('d M Y') }}
+                            </td>
+                            
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-300">
+                                {{ $item->student->nis ?? '-' }}
                             </td>
 
                             <td class="px-6 py-4 font-medium text-gray-100 whitespace-nowrap">
@@ -67,7 +72,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="4" class="px-6 py-10 text-center text-gray-500">
+                            <td colspan="5" class="px-6 py-10 text-center text-gray-500">
                                 Belum ada data kunjungan.
                             </td>
                         </tr>

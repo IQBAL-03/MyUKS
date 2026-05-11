@@ -18,6 +18,7 @@
                 <thead>
                     <tr class="bg-gray-800 text-gray-400 text-xs uppercase tracking-wider">
                         <th class="px-6 py-3 border-b border-gray-700 font-semibold w-12">No</th>
+                        <th class="px-6 py-3 border-b border-gray-700 font-semibold">NIS</th>
                         <th class="px-6 py-3 border-b border-gray-700 font-semibold">Nama Siswa</th>
                         <th class="px-6 py-3 border-b border-gray-700 font-semibold">Jenis Kelamin</th>
                         <th class="px-6 py-3 border-b border-gray-700 font-semibold">Kelas</th>
@@ -30,6 +31,7 @@
                             <td class="px-6 py-4 text-gray-400">
                                 {{ $students->firstItem() + $index }}
                             </td>
+                            <td class="px-6 py-4 text-gray-100">{{ $student->nis }}</td>
                             <td class="px-6 py-4 text-gray-100 font-medium">{{ $student->nama }}</td>
                             <td class="px-6 py-4 text-gray-100">
                                 @if ($student->jenis_kelamin === 'L')
@@ -54,7 +56,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5" class="px-6 py-10 text-center text-gray-500">
+                            <td colspan="6" class="px-6 py-10 text-center text-gray-500">
                                 Belum ada data siswa.
                             </td>
                         </tr>

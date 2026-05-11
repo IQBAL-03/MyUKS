@@ -31,7 +31,7 @@
         <form method="POST" action="{{ route('verification.send') }}">
             @csrf
             <button type="submit" class="w-full bg-sky-600 hover:bg-sky-500 text-white font-medium rounded-lg py-2.5 transition-colors duration-200">
-                Kirim Ulang Email
+                Kirim Verifikasi Email
             </button>
         </form>
 
