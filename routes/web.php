@@ -27,7 +27,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/laporan', [\App\Http\Controllers\ReportController::class, 'index'])->name('reports.index');
         Route::resource('students', StudentController::class);
         Route::resource('medicines', MedicineController::class)->except(['edit', 'update']);
-        Route::resource('kelas', KelasController::class);
+        Route::resource('kelas', KelasController::class)->parameters(['kelas' => 'kelas']);
     });
     Route::middleware('role:petugas')->group(function () {
         Route::get('/stok-obat', [MedicineController::class, 'index']);
