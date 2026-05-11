@@ -16,8 +16,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
         $obat = \App\Models\Medicine::count();
         $perawatan = \App\Models\Treatment::count();
         $kelas = \App\Models\Kelas::count();
+        $recent_treatments = \App\Models\Treatment::with('student')->orderBy('tanggal_kunjungan', 'desc')->take(5)->get();
 
-        return view('dashboard', compact('siswa', 'obat', 'perawatan', 'kelas'));
+        return view('dashboard', compact('siswa', 'obat', 'perawatan', 'kelas', 'recent_treatments'));
     })->name('dashboard');
 
     Route::resource('treatments', TreatmentController::class);
