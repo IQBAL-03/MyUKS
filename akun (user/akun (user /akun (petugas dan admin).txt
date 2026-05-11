@@ -1,5 +1,0 @@
-email: admin@gmail.com
-sandi: Admin123
-
-email: muhamadiqbal9871@gmail.com
-sandi: 16792020Emol
