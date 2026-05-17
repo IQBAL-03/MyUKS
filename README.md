@@ -1,58 +1,100 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="300" alt="Laravel Logo">
 </p>
 
-## About Laravel
+<p align="center">
+<a href="https://github.com/iqbal-03"><img src="https://img.shields.io/badge/GitHub-IQBAL--03-181717?logo=github" alt="GitHub"></a>
+<a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-success.svg" alt="License"></a>
+</p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+# 🏥 MyUKS - Sistem Digitalisasi Manajemen Unit Kesehatan Sekolah
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+**MyUKS** adalah aplikasi web berbasis Laravel yang dirancang untuk memodernisasi dan mendigitalisasi pengelolaan Unit Kesehatan Sekolah (UKS). Aplikasi ini mempermudah petugas dan pengelola UKS dalam mencatat rekam medis kunjungan siswa, memantau ketersediaan stok obat secara real-time, serta menyajikan laporan kunjungan yang terstruktur.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 🚀 Fitur Utama
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **📊 Dashboard Interaktif**: Menampilkan metrik utama (Total Siswa, Total Obat, Total Perawatan, dan Total Kelas) serta tabel kunjungan siswa terbaru.
+- **🩺 Pencatatan Kunjungan & Rekam Medis (Treatments)**: Mencatat riwayat keluhan, diagnosa, serta pemberian obat kepada siswa. Sistem secara otomatis mengurangi stok obat yang diberikan.
+- **💊 Manajemen Stok Obat (Medicines)**: Mengelola data nama obat, satuan, dan jumlah stok secara efisien.
+- **👥 Manajemen Siswa & Kelas**: Mendata siswa beserta Nomor Induk Siswa (NIS), jenis kelamin, dan penempatan kelas guna mempermudah penelusuran riwayat medis.
+- **📈 Laporan Kunjungan**: Rekapitulasi otomatis kunjungan UKS bulanan dan tahunan untuk kebutuhan pelaporan sekolah.
+- **🔐 Sistem Hak Akses (Role-Based Access)**: Memisahkan wewenang antara **Admin** (akses penuh ke seluruh master data dan laporan) dan **Petugas** (fokus pada pencatatan kunjungan dan pembaruan stok obat). Dilengkapi juga dengan fitur verifikasi email dan reset sandi.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## 🛠️ Teknologi yang Digunakan
 
-## Agentic Development
+- **Backend**: Laravel 11 (PHP 8.2+)
+- **Frontend**: Blade Templating, Tailwind CSS, Alpine.js
+- **Database**: MySQL / SQLite (Mendukung skema migrasi Laravel)
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+---
 
+## 🔑 Akun Akses Demo / Pengujian
+
+Untuk mencoba aplikasi, Anda dapat menggunakan kredensial akun berikut yang telah dikonfigurasi:
+
+| Peran (Role) | Email | Sandi (Password) | Hak Akses |
+| :--- | :--- | :--- | :--- |
+| **Admin** | `admin@gmail.com` | `Admin123` | Akses penuh (Master Data, Kunjungan, Laporan, Pengguna) |
+
+---
+
+## 📦 Panduan Instalasi & Konfigurasi Lokal
+
+Ikuti langkah-langkah di bawah ini untuk menjalankan proyek MyUKS di lingkungan pengembangan lokal Anda:
+
+### 1. Kloning Repositori
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+git clone https://github.com/iqbal-03/MyUKS.git
+cd MyUKS
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+### 2. Instalasi Dependensi
+Pastikan Anda telah menginstal Composer dan Node.js di sistem Anda.
+```bash
+composer install
+npm install
+```
 
-## Contributing
+### 3. Konfigurasi Lingkungan (.env)
+Salin file konfigurasi contoh dan sesuaikan pengaturan koneksi database Anda:
+```bash
+cp .env.example .env
+```
+Lalu jalankan perintah berikut untuk menghasilkan *application key*:
+```bash
+php artisan key:generate
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 4. Migrasi Database & Seeding
+Jalankan migrasi untuk membuat tabel database beserta data awal (seeder akun):
+```bash
+php artisan migrate --seed
+```
 
-## Code of Conduct
+### 5. Menjalankan Server Pengembangan
+Jalankan proses *build* aset frontend dan jalankan server lokal Laravel:
+```bash
+# Terminal 1 (Frontend assets)
+npm run dev
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+# Terminal 2 (Backend server)
+php artisan serve
+```
+Aplikasi kini dapat diakses melalui browser pada alamat: `http://localhost:8000`
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 📸 Cuplikan Layar (Screenshots)
 
-## License
+Berikut adalah beberapa tampilan antarmuka dari sistem MyUKS:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- **Halaman Utama (Welcome)**: Akses masuk dan pendaftaran sistem.
+- **Dashboard**: Ringkasan data statistik dan aktivitas kunjungan terkini.
+- **Pencatatan Kunjungan**: Formulir pencatatan keluhan, diagnosa, dan alokasi obat.
+- **Daftar Obat & Stok**: Pemantauan ketersediaan obat UKS secara langsung.
+
+---
